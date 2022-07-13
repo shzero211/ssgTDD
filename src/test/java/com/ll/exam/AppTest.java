@@ -34,5 +34,19 @@ class AppTest {
 
         assertEquals("안녕", rs);
     }
+    @Test
+    public void 프로그램_시작시_타이틀_출력_그리고_종료() {
+        Scanner sc = TestUtil.genScanner("종료");
+        ByteArrayOutputStream output = TestUtil.setOutToByteArray();
+
+        new App(sc).run();
+
+        String rs = output.toString();
+        TestUtil.clearSetOutToByteArray(output);
+
+        assertTrue(rs.contains("== 명언 SSG =="));
+        assertTrue(rs.contains("명령)"));
+    }
+
 
 }
