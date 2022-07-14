@@ -28,7 +28,7 @@ public void run(){
                 String author=sc.nextLine().trim();
                 WiseSaying wiseSaying=new WiseSaying(++lastIdx,content,author);
                 wiseSayings.add(wiseSaying);
-                System.out.printf("%d번 명언이 등록되었습니다.",lastIdx);
+                System.out.printf("%d번 명언이 등록되었습니다\n",lastIdx);
                 break ;
             case "목록":
                 System.out.println("번호 / 작가 / 명언");
@@ -38,7 +38,32 @@ public void run(){
                 }
                 break;
             case "수정":
+                int mid=rq.getIntValue("id",0);
 
+                if(mid==0){
+                    System.out.println("번호를 입력해주세요.");
+                    break ;
+                }
+                WiseSaying mfoundWiseSaying=null;
+
+                for(WiseSaying wiseSaying_:wiseSayings){
+                    if(wiseSaying_.id==mid){
+                        mfoundWiseSaying=wiseSaying_;
+                    }
+                }
+
+                if(mfoundWiseSaying==null){
+                    System.out.printf("%d번 명언은 존재하지 않습니다.\n",mid);
+                    break;
+                }
+                System.out.printf("명언(기존) : %s\n",mfoundWiseSaying.content);
+                System.out.print("명언 : ");
+                String mcontent=sc.nextLine().trim();
+                System.out.printf("작가(기존) : %s\n",mfoundWiseSaying.author);
+                System.out.print("작가 : ");
+                String mauthor=sc.nextLine().trim();
+                mfoundWiseSaying.content=mcontent;
+                mfoundWiseSaying.author=mauthor;
                 break;
             case "삭제":
                 int id=rq.getIntValue("id",0);

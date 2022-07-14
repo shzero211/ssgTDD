@@ -101,5 +101,24 @@ class AppTest {
     assertTrue(rs.contains("2 / 작가2 / 명언2"));
     assertTrue(rs.contains("1번 명언은 존재하지 않습니다."));
 }
+    @Test
+    public void 명언수정(){
+        String rs=AppTestRunner.run("""
+            등록
+            명언1
+            작가1
+            등록
+            명언2
+            작가2
+            목록
+            수정?id=1
+            명언3
+            작가3
+            목록
+            종료
+            """);
+        assertTrue(rs.contains("1 / 작가1 / 명언1"));
+        assertTrue(rs.contains("1 / 작가3 / 명언3"));
+    }
 
 }
