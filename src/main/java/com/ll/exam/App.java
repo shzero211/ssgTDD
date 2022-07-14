@@ -11,7 +11,7 @@ private int idx;
 public App(Scanner sc){
     this.sc=sc;
     wiseSayings=new ArrayList<>();
-    idx=-1;
+    idx=0;
 }
 public void run(){
     System.out.println("== 명언 SSG ==");
@@ -27,6 +27,7 @@ public void run(){
                 String author=sc.nextLine().trim();
                 WiseSaying wiseSaying=new WiseSaying(++idx,content,author);
                 wiseSayings.add(wiseSaying);
+                System.out.printf("%d번 명언이 등록되었습니다.",idx);
                 break ;
             case "종료":
                 break  outer;

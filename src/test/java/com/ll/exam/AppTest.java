@@ -50,19 +50,16 @@ class AppTest {
 @Test
     public void 등록을_입력하면_명언과_작가_출력(){
     //문자열로 입력을 받음
-    Scanner sc=TestUtil.genScanner("""
+    String rs=AppTestRunner.run("""
             등록
             명언1
             작가1
             종료
             """);
-    //출력을 보관하기 위해 선언
-    ByteArrayOutputStream output=TestUtil.setOutToByteArray();
-    new App(sc).run();
-    String rs=output.toString();
-   TestUtil.clearSetOutToByteArray(output);
+
    assertTrue(rs.contains("명언 : "));
     assertTrue(rs.contains("작가 : "));
+    assertTrue(rs.contains("1번 명언이 등록되었습니다."));
 }
 
 }
