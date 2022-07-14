@@ -54,12 +54,33 @@ class AppTest {
             등록
             명언1
             작가1
+            등록
+            명언2
+            작가2
             종료
             """);
 
    assertTrue(rs.contains("명언 : "));
     assertTrue(rs.contains("작가 : "));
     assertTrue(rs.contains("1번 명언이 등록되었습니다."));
+    assertTrue(rs.contains("2번 명언이 등록되었습니다."));
+}
+@Test
+    public void 등록후_목록_입력시_출력_확인(){
+    String rs=AppTestRunner.run("""
+            등록
+            명언1
+            작가1
+            등록
+            명언2
+            작가2
+            목록
+            종료
+            """);
+    assertTrue(rs.contains("번호 / 작가 / 명언"));
+    assertTrue(rs.contains("----------------------"));
+    assertTrue(rs.contains("2 / 작가2 / 명언2"));
+    assertTrue(rs.contains("1 / 작가1 / 명언1"));
 }
 
 }
