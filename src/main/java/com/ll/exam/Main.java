@@ -1,7 +1,10 @@
 package com.ll.exam;
 
-public class Main {
-    public static void main(String[] args) {
+import java.util.Scanner;
 
+public class Main {
+    static Scanner sc=new Scanner(System.in);
+    public static void main(String[] args) {
+     new App(sc).run();
     }
 }
