@@ -68,4 +68,13 @@ public class WiseSayingTableTest {
         assertEquals("명언2", wiseSayings.get(1).content);
         assertEquals("작가2", wiseSayings.get(1).author);
     }
+    @Test
+    public void 삭제() {
+        WiseSayingTable wiseSayingTable=new WiseSayingTable("test_data");
+        wiseSayingTable.removeById(1);
+
+        WiseSaying wiseSaying = wiseSayingTable.findById(1);
+
+        assertEquals(null, wiseSaying);
+    }
 }
