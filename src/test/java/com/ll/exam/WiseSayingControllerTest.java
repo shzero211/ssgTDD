@@ -15,7 +15,7 @@ public class WiseSayingControllerTest {
         Util.file.mkdir("test_data");
         Util.file.saveToFile("test_data/1.txt","안녕");
 
-        String body=Util.file.readFromFile("test_data/1.txt");
+        String body=Util.file.readFromFile("test_data/1.txt","");
         assertEquals("안녕",body);
     }
     @Test

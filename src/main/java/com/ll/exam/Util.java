@@ -27,8 +27,8 @@ public class Util {
         public static void mkdir(String path) {
             new File(path).mkdirs();
         }
-
-        public static String readFromFile(String path) {
+        //2번째 파라미터는 내용이 없으면 빈배열을 return
+        public static String readFromFile(String path,String defaultValue) {
             try (RandomAccessFile reader = new RandomAccessFile(path, "r")) {
                 StringBuilder sb = new StringBuilder();
 
@@ -49,7 +49,7 @@ public class Util {
                 return sb.toString();
 
             } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
+               return defaultValue;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

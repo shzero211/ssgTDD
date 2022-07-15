@@ -15,4 +15,12 @@ public class WiseSayingTableTest {
         wiseSayingTable.save(wiseSaying);
         assertTrue(new File("test_data/wise_saying/1.json").exists());
     }
+    @Test
+    public void save_파라미터2개_테스트(){
+        WiseSayingTable wiseSayingTable=new WiseSayingTable("test_data");
+        wiseSayingTable.save("명언1","작가1");
+        wiseSayingTable.save("명언2","작가2");
+        assertTrue(new File("test_data/wise_saying/1.json").exists());
+        assertTrue(new File("test_data/wise_saying/2.json").exists());
+    }
 }
