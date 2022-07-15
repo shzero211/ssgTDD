@@ -9,4 +9,13 @@ public class WiseSaying {
         this.content=content;
         this.author=author;
     }
+    public String toJson(){
+        return """
+                {
+                    "id" : %d,
+                    "content" : "%s" ,
+                    "author" : "%s"
+                }
+                """.stripIndent().formatted(id,content,author);
+    }
 }
