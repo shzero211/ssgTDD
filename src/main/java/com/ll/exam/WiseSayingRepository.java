@@ -20,10 +20,6 @@ public class WiseSayingRepository {
 //        return wiseSaying;
     }
 
-    public List<WiseSaying> list() {
-        return wiseSayingTable.findAll();
-        //return wiseSayings;
-    }
 
     public WiseSaying findById(int id) {
         return wiseSayingTable.findById(id);
@@ -35,7 +31,9 @@ public class WiseSayingRepository {
         }
         return foundWiseSaying;*/
     }
-
+    public List<WiseSaying> findAll(){
+        return wiseSayingTable.findAll();
+    }
     public void remove(int id) {
        wiseSayingTable.removeById(id);
 //        WiseSaying wiseSaying=findById(id);
