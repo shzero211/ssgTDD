@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
+    public static String mode="prod";
+    public static String getBaseDir(){
+        return mode+"_data";
+    }
 private Scanner sc;
 WiseSayingController wiseSayingController;
 public App(Scanner sc){

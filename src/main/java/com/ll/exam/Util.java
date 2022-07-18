@@ -15,27 +15,28 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Util {
+    //json처리 관련 클래스
     public static class json {
-
+         //파일 한개를 jsom->map으로 변환
         public static Map<String, Object> jsonToMapFromFile(String path) {
             String json = file.readFromFile(path, "");
 
             if ( json.isEmpty() ) {
                 return null;
             }
-
+            //json 문자열을 "key":"value"형식으로 저장
             final String[] jsonBits = json
                     .replaceAll("\\{", "")
                     .replaceAll("\\}", "")
                     .split(",");
-
+            //key value 값을 리스트에 넣기
             final List<Object> bits = Stream.of(jsonBits)
                     .map(String::trim)
                     .flatMap(bit -> Arrays.stream(bit.split(":")))
                     .map(String::trim)
                     .map(s -> s.startsWith("\"") ? s.substring(1, s.length() - 1) : Integer.parseInt(s))
                     .collect(Collectors.toList());
-
+            //key값과value값을 map에 넣어준다.
             Map<String, Object> map = IntStream
                     .range(0, bits.size() / 2)
                     .mapToObj(i -> Pair.of((String) bits.get(i * 2), bits.get(i * 2 + 1)))
@@ -44,6 +45,7 @@ public class Util {
             return map;
         }
     }
+    //file 입출력관련 class
     public static class file {
         public static void saveToFile(String path, String body) {
             try (RandomAccessFile stream = new RandomAccessFile(path, "rw");

@@ -15,23 +15,17 @@ public class WiseSayingTable {
         String body=wiseSaying.toJson();
         Util.file.saveToFile("%s/wise_saying/%d.json".formatted(baseDir,wiseSaying.id),body);
     }
-    public void save(String content,String author){
+    public WiseSaying save(String content,String author){
         int id=getLastId()+1;
         WiseSaying wiseSaying=new WiseSaying(id,content,author);
         save(wiseSaying);
         saveLastId(id);
+        return wiseSaying;
     }
-    public void saveOnlyOneJson(String content,String author){
-        int id=getLastId()+1;
+    public boolean save(int id,String content,String author){
         WiseSaying wiseSaying=new WiseSaying(id,content,author);
-        saveOne(wiseSaying);
-        saveLastId(id);
-    }
-
-    private void saveOne(WiseSaying wiseSaying) {
-        Util.file.mkdir("%s/wise_saying".formatted(baseDir));
-        String body=wiseSaying.toJson();
-        Util.file.saveToFile("%s/wise_saying/body.json".formatted(baseDir),body);
+        save(wiseSaying);
+        return true;
     }
 
     private void saveLastId(int id){
@@ -44,9 +38,9 @@ public class WiseSayingTable {
         }
         return Integer.parseInt(lastId);
     }
+
     public WiseSaying findById(int id) {
         String path = "%s/wise_saying/%d.json".formatted(baseDir, id);
-        //String path = "%s/wise_saying/data.json".formatted(baseDir);
         if (new File(path).exists() == false) {
             return null;
         }
